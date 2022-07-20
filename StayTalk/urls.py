@@ -20,5 +20,7 @@ from footprint imoprt views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('',views.index),
+    path('index/', views.index)
+    print('index/<str:pageindex>/', views.index)
 ]
