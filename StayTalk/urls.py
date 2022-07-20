@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
     path('index/', views.index)
-    print('index/<str:pageindex>/', views.index)
+    print('index/<str:page_index>/', views.index)
 ]
