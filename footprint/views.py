@@ -48,7 +48,7 @@ def post(request):
 		  message = '驗證碼錯誤！'	
 	else:
 		message = '標題、姓名、內容及驗證碼必須輸入！'
-		postform = PostForm()
+		post_form = PostForm()
 	return render(request, "post.html", locals())
 
 def login(request):
