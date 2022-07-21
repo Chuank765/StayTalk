@@ -31,18 +31,18 @@ def index(request, page_index=None):
 
 def post(request):
 	if request.method == "POST":
-		postform = PostForm(request.POST)
-		if postform.is_valid():
-		  subject = postform.cleaned_data['board_subject']
-		  name =  postform.cleaned_data['board_name']
+		post_form = PostForm(request.POST)
+		if post_form.is_valid():
+		  subject = post_form.cleaned_data['board_subject']
+		  name =  post_form.cleaned_data['board_name']
 		  gender =  request.POST.get('board_gender', None)
-		  mail = postform.cleaned_data['board_mail']
-		  web =  postform.cleaned_data['board_web']
-		  content =  postform.cleaned_data['board_content']
+		  mail = post_form.cleaned_data['board_mail']
+		  web =  post_form.cleaned_data['board_web']
+		  content =  post_form.cleaned_data['board_content']
 		  unit = BoardUnit.objects.create(base_name=name, base_gender=gender, base_subject=subject, base_mail=mail, base_web=web, base_content=content, base_response='')
 		  unit.save()
 		  message = '已儲存...'
-		  postform = PostForm()
+		  post_form = PostForm()
 		  return redirect('/index/')	
 		else:
 		  message = '驗證碼錯誤！'	
@@ -71,41 +71,41 @@ def logout(request):
 	auth.logout(request)
 	return redirect('/index/')
 
-def adminmain(request, pageindex=None):
+def adminmain(request, page_index=None):
 	global page
-	pagesize = 3
-	boardall = BoardUnit.objects.all().order_by('-id')
-	datasize = len(boardall)
-	totpage = math.ceil(datasize / pagesize)
-	if pageindex==None:
+	page_size = 3
+	board_all = BoardUnit.objects.all().order_by('-id')
+	data_size = len(board_all)
+	totpage = math.ceil(data_size / page_size)
+	if page_index==None:
 		page =0
-		boardunits = BoardUnit.objects.order_by('-id')[:pagesize]
-	elif pageindex=='prev':
-		start = (page-1)*pagesize
+		board_units = BoardUnit.objects.order_by('-id')[:page_size]
+	elif page_index=='prev':
+		start = (page-1)*page_size
 		if start >= 0:
-			boardunits = BoardUnit.objects.order_by('-id')[start:(start+pagesize)]
+			board_units = BoardUnit.objects.order_by('-id')[start:(start+page_size)]
 			page -= 1
-	elif pageindex=='next':
-		start = (page+1)*pagesize
-		if start < datasize:
-			boardunits = BoardUnit.objects.order_by('-id')[start:(start+pagesize)]
+	elif page_index=='next':
+		start = (page+1)*page_size
+		if start < data_size:
+			board_units = BoardUnit.objects.order_by('-id')[start:(start+page_size)]
 			page += 1
-	elif pageindex=='ret':
-		start = page*pagesize
-		boardunits = BoardUnit.objects.order_by('-id')[start:(start+pagesize)]
+	elif page_index=='ret':
+		start = page*page_size
+		board_units = BoardUnit.objects.order_by('-id')[start:(start+page_size)]
 	else:
-		unit = BoardUnit.objects.get(id=pageindex)
-		unit.bsubject=request.POST.get('boardsubject', '')
-		unit.bcontent=request.POST.get('boardcontent', '')
-		unit.bresponse=request.POST.get('boardresponse', '')
+		unit = BoardUnit.objects.get(id=page_index)
+		unit.base_subject=request.POST.get('board_subject', '')
+		unit.base_content=request.POST.get('board_content', '')
+		unit.base_response=request.POST.get('board_response', '')
 		unit.save()
 		return redirect('/adminmain/ret/')
 	currentpage = page+1
 	return render(request, "adminmain.html", locals())
 
-def delete(request, boardid=None, deletetype=None):
-	unit = BoardUnit.objects.get(id=boardid)
-	if deletetype == 'del':
+def delete(request, board_id=None, delete_type=None):
+	unit = BoardUnit.objects.get(id=board_id)
+	if delete_type == 'del':
 		unit.delete()
 		return redirect('/adminmain/')
 	return render(request, "delete.html", locals())

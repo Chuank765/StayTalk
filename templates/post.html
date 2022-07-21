@@ -18,35 +18,31 @@
             <table width="100%" border="0" cellspacing="1" cellpadding="4">
               <tr>
                 <th width="80" align="right" valign="baseline">標題</th>
-                <td valign="baseline">{{postform.boardsubject}}</td>
+                <td valign="baseline">{{post_form.board_subject}}</td>
               </tr>
               <tr>
                 <th align="right" valign="baseline">姓名</th>
-                <td valign="baseline">{{postform.boardname}}</td>
+                <td valign="baseline">{{post_form.board_name}}</td>
               </tr>
               <tr>
                 <th align="right" valign="baseline">性別</th>
                 <td valign="baseline">
-                  <input name="boardgender" type="radio" id="boardgender" value="m" checked="checked" />
+                  <input name="board_gender" type="radio" id="board_gender" value="m" checked="checked" />
                   <img src="{% static "images/boy.png" %}" width="72" height="63" alt="男生" />
-                  <input name="boardgender" type="radio" id="boardgender2" value="f" />
+                  <input name="board_gender" type="radio" id="board_gender2" value="f" />
                   <img src="{% static "images/girl.png" %}" width="72" height="63" alt="女生" /></td>
               </tr>
               <tr>
                 <th align="right" valign="baseline">電子郵件</th>
-                <td valign="baseline">{{postform.boardmail}}</td>
+                <td valign="baseline">{{post_form.board_mail}}</td>
               </tr>
               <tr>
                 <th align="right" valign="baseline">個人網站</th>
-                <td valign="baseline">{{postform.boardweb}}</td>
+                <td valign="baseline">{{post_form.board_web}}</td>
               </tr>
               <tr>
                 <th align="right" valign="baseline">內容</th>
-                <td valign="baseline">{{postform.boardcontent}}</td>
-              </tr>
-              <tr>
-                <th align="right" valign="baseline">驗證碼</th>
-                <td valign="baseline">{{postform.captcha}}</td>
+                <td valign="baseline">{{post_form.board_content}}</td>
               </tr>
               <tr>
                 <th colspan="2" align="center" valign="baseline">
