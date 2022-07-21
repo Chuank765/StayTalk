@@ -7,39 +7,39 @@ import math
 
 page = 0
 
-def index(request, pageindex=None): 
+def index(request, page_index=None): 
 	global page
-	pagesize = 3
-	boardall = BoardUnit.objects.all().order_by('-id')
-	datasize = len(boardall)
-	totpage = math.ceil(datasize / pagesize)
-	if pageindex==None:
+	page_size = 3
+	board_all = BoardUnit.objects.all().order_by('-id')
+	data_size = len(board_all)
+	total_page = math.ceil(data_size / page_size)
+	if page_index==None:
 		page = 0
-		boardunits = BoardUnit.objects.order_by('-id')[:pagesize]
-	elif pageindex=='prev':
-		start = (page-1)*pagesize
+		board_units = BoardUnit.objects.order_by('-id')[:page_size]
+	elif page_index=='prev':
+		start = (page-1)*page_size
 		if start >= 0: 
-			boardunits = BoardUnit.objects.order_by('-id')[start:(start+pagesize)]
+			board_units = BoardUnit.objects.order_by('-id')[start:(start+page_size)]
 			page -= 1
-	elif pageindex=='next':
-		start = (page+1)*pagesize
-		if start < datasize:
-			boardunits = BoardUnit.objects.order_by('-id')[start:(start+pagesize)]
+	elif page_index=='next':
+		start = (page+1)*page_size
+		if start < data_size:
+			board_units = BoardUnit.objects.order_by('-id')[start:(start+page_size)]
 			page += 1
-	currentpage = page + 1
+	current_page = page + 1
 	return render(request, "index.html", locals())
 
 def post(request):
 	if request.method == "POST":
 		postform = PostForm(request.POST)
 		if postform.is_valid():
-		  subject = postform.cleaned_data['boardsubject']
-		  name =  postform.cleaned_data['boardname']
-		  gender =  request.POST.get('boardgender', None)
-		  mail = postform.cleaned_data['boardmail']
-		  web =  postform.cleaned_data['boardweb']
-		  content =  postform.cleaned_data['boardcontent']
-		  unit = BoardUnit.objects.create(bname=name, bgender=gender, bsubject=subject, bmail=mail, bweb=web, bcontent=content, bresponse='')
+		  subject = postform.cleaned_data['board_subject']
+		  name =  postform.cleaned_data['board_name']
+		  gender =  request.POST.get('board_gender', None)
+		  mail = postform.cleaned_data['board_mail']
+		  web =  postform.cleaned_data['board_web']
+		  content =  postform.cleaned_data['board_content']
+		  unit = BoardUnit.objects.create(base_name=name, base_gender=gender, base_subject=subject, base_mail=mail, base_web=web, base_content=content, base_response='')
 		  unit.save()
 		  message = '已儲存...'
 		  postform = PostForm()
