@@ -20,7 +20,14 @@ from footprint import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
+    path('', views.index),
     path('index/', views.index),
-    path('index/<str:page_index>/', views.index)
+    path('index/<str:pageindex>/', views.index),
+    path('post/', views.post),
+    path('login/', views.login),
+    path('logout/', views.logout),
+    path('adminmain/', views.adminmain),
+    path('adminmain/<str:pageindex>/', views.adminmain),
+    path('delete/<int:boardid>/', views.delete),
+    path('delete/<int:boardid>/<str:deletetype>/', views.delete),
 ]
