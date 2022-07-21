@@ -6,7 +6,7 @@
 {% block content %}
 	</td>
   </tr>
-  {% for unit in boardunits %}
+  {% for unit in board_units %}
 	<tr>
 	  <td background="{% static "images/g_r3_c3.png" %}">
 		  <table width="545" border="0" align="center" cellpadding="0" cellspacing="0" background="{% static "images/g_r5_c4.png" %}"
@@ -27,19 +27,19 @@
 					<p class="editor">
 					  <img src="{% static "images/user.png" %}" width="16" height="16" align="absmiddle">{{unit.bname}}&nbsp; 
 					  <img src="{% static "images/date.png" %}" width="16" height="16" align="absmiddle">{{unit.btime}}&nbsp; 
-					  <a href="mailto:{{unit.bmail}}" target="_blank">
+					  <a href="mailto:{{unit.base_mail}}" target="_blank">
 						<img src="{% static "images/email.png" %}" width="16" height="16" border="0" align="absmiddle"></a>&nbsp; 
-					  <a href="{{unit.bweb}}" target="_blank">
+					  <a href="{{unit.base_web}}" target="_blank">
 						<img src="{% static "images/world.png" %}" width="16" height="16" border="0" align="absmiddle"></a>&nbsp; 
 					</p>
 					<p class="title">留言標題
-					  <input name="boardsubject" type="text" id="boardsubject" style="margin-top:5px" value="{{unit.bsubject}}" size="40">
+					  <input name="board_subject" type="text" id="board_subject" style="margin-top:5px" value="{{unit.base_subject}}" size="40">
 					</p>
 					<p class="title"> 留言內容
-					  <textarea name="boardcontent" cols="50" rows="5" id="boardcontent" style="margin-top:5px">{{unit.bcontent}}</textarea>
+					  <textarea name="board_content" cols="50" rows="5" id="board_content" style="margin-top:5px">{{unit.base_content}}</textarea>
 					</p>
 					<p class="title">版主回應
-					  <textarea name="boardresponse" cols="50" rows="5" id="boardresponse">{{unit.bresponse}}</textarea>
+					  <textarea name="board_response" cols="50" rows="5" id="board_response">{{unit.base_response}}</textarea>
 					</p>
 					<p align="center">
 					  <input type="submit" name="button" id="button" value="確定修改">

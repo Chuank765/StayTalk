@@ -25,16 +25,16 @@
 					{% endif %}
 				</div>
 				<div class="contentDiv">
-				  <p class="title">{{unit.bsubject}}</p>
+				  <p class="title">{{unit.base_subject}}</p>
 				  <p></p>
-				  <p>{{unit.bcontent}}</p>
-				  {% if unit.bresponse != "" %}
+				  <p>{{unit.base_content}}</p>
+				  {% if unit.base_response != "" %}
 					<div class="responseDiv">
-					  <p><strong>版主回應</strong>：{{unit.bresponse}}</p>
+					  <p><strong>版主回應</strong>：{{unit.base_response}}</p>
 					</div>
 				  {% endif %}
-				  <p class="editor"><img src="{% static "images/user.png" %}" width="16" height="16" align="absmiddle">{{unit.bname}}&nbsp; 
-					<img src="{% static "images/date.png" %}" width="16" height="16" align="absmiddle">{{unit.btime}}&nbsp;
+				  <p class="editor"><img src="{% static "images/user.png" %}" width="16" height="16" align="absmiddle">{{unit.base_name}}&nbsp; 
+					<img src="{% static "images/date.png" %}" width="16" height="16" align="absmiddle">{{unit.base_time}}&nbsp;
 					{% if unit.bmail != "" %}
 					  <a href="mailto:{{unit.bmail}}" target="_blank">
 					  <img src="{% static "images/email.png" %}" width="16" height="16" border="0" align="absmiddle"></a>
