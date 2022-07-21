@@ -16,11 +16,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from footprint imoprt views
+from footprint import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
-    path('index/', views.index)
-    print('index/<str:page_index>/', views.index)
+    path('index/', views.index),
+    path('index/<str:page_index>/', views.index)
 ]
