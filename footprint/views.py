@@ -10,7 +10,7 @@ page = 0
 def index(request, pageindex=None): 
 	global page
 	pagesize = 3
-	boardall = models.BoardUnit.objects.all().order_by('-id')
+	boardall = BoardUnit.objects.all().order_by('-id')
 	datasize = len(boardall)
 	totpage = math.ceil(datasize / pagesize)
 	if pageindex==None:
@@ -39,7 +39,7 @@ def post(request):
 		  mail = postform.cleaned_data['boardmail']
 		  web =  postform.cleaned_data['boardweb']
 		  content =  postform.cleaned_data['boardcontent']
-		  unit = models.BoardUnit.objects.create(bname=name, bgender=gender, bsubject=subject, bmail=mail, bweb=web, bcontent=content, bresponse='')
+		  unit = BoardUnit.objects.create(bname=name, bgender=gender, bsubject=subject, bmail=mail, bweb=web, bcontent=content, bresponse='')
 		  unit.save()
 		  message = '已儲存...'
 		  postform = PostForm()
