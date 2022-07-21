@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}<title> Message Board</title>{% endblock  %}
+{% block title %}<title>網站留言版</title>{% endblock %}
 
 {% block twomenu %}
-    <img src="{% static "images/comment.png" %}" width="16" height="16" align="absmiddle" /> <a href="/post/">I want to leave message</a> 
-    <img src="{% static "images/key.png" %}" width="16" height="16" align="absmiddle" /> <a href="/login/">admin</a>
-{% endblock%}
+	<img src="{% static "images/comment.png" %}" width="16" height="16" align="absmiddle" /> <a href="/post/">我要留言</a> 
+	<img src="{% static "images/key.png" %}" width="16" height="16" align="absmiddle" /> <a href="/login/">版主管理</a>
+{% endblock %}
 
-% block content %}
+{% block content %}
 	 </td>
   </tr>
   {% for unit in boardunits %}

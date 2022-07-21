@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from forms import PostForm
-from models import BoardUnit
+from .forms import PostForm
+from .models import BoardUnit
 from django.contrib.auth import authenticate
 from django.contrib import auth
 import math
