@@ -17,17 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from footprint import views
+from footprint.views import data, board, user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
-    path('index/', views.index),
-    path('index/<str:page_index>/', views.index),
-    path('post/', views.post),
-    path('login/', views.login),
-    path('logout/', views.logout),
-    path('adminmain/', views.adminmain),
-    path('adminmain/<str:page_index>/', views.adminmain),
-    path('delete/<int:board_id>/', views.delete),
-    path('delete/<int:board_id>/<str:delete_type>/', views.delete),
+    path('', board.index),
+    path('index/', board.index),
+    path('index/<str:page_index>/', board.index),
+    path('post/', data.post),
+    path('login/', user.login),
+    path('logout/', user.logout),
+    path('adminmain/', board.adminmain),
+    path('adminmain/<str:page_index>/', board.adminmain),
+    path('delete/<int:board_id>/', data.delete),
+    path('delete/<int:board_id>/<str:delete_type>/', data.delete),
 ]
