@@ -1,6 +1,6 @@
 from django.db import models
 
-class BoardUnit(models.Model):
+class Board(models.Model):
     base_name = models.CharField(max_length=20, null=False)
     base_gender = models.CharField(max_length=2, default='m', null=False)
     base_subject = models.CharField(max_length=100, null=False)

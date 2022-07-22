@@ -11,37 +11,37 @@
 {% block content %}
 	 </td>
   </tr>
-  {% for unit in board_units %}
+  {% for board in boards %}
 	<tr>
 	  <td background="{% static "images/g_r3_c3.png" %}">
 		  <table width="545" border="0" align="center" cellpadding="0" cellspacing="0" background="{% static "images/g_r5_c4.png" %}"
 			<tr>
 			  <td valign="top" style="background:url({% static "images/g_r4_c4.png" %}); background-repeat:no-repeat">
 				<div class="floorDiv">
-					{% if unit.bgender == "m" %}
+					{% if board.bgender == "m" %}
 						<img src="{% static "images/boy.png" %}" width="72" height="63" />
 					{% else %}
 						<img src="{% static "images/girl.png" %}" width="72" height="63" />
 					{% endif %}
 				</div>
 				<div class="contentDiv">
-				  <p class="title">{{unit.base_subject}}</p>
+				  <p class="title">{{board.base_subject}}</p>
 				  <p></p>
-				  <p>{{unit.base_content}}</p>
-				  {% if unit.base_response != "" %}
+				  <p>{{board.base_content}}</p>
+				  {% if board.base_response != "" %}
 					<div class="responseDiv">
-					  <p><strong>版主回應</strong>：{{unit.base_response}}</p>
+					  <p><strong>版主回應</strong>：{{board.base_response}}</p>
 					</div>
 				  {% endif %}
-				  <p class="editor"><img src="{% static "images/user.png" %}" width="16" height="16" align="absmiddle">{{unit.base_name}}&nbsp; 
-					<img src="{% static "images/date.png" %}" width="16" height="16" align="absmiddle">{{unit.base_time}}&nbsp;
-					{% if unit.bmail != "" %}
-					  <a href="mailto:{{unit.bmail}}" target="_blank">
+				  <p class="editor"><img src="{% static "images/user.png" %}" width="16" height="16" align="absmiddle">{{board.base_name}}&nbsp; 
+					<img src="{% static "images/date.png" %}" width="16" height="16" align="absmiddle">{{board.base_time}}&nbsp;
+					{% if board.base_mail != "" %}
+					  <a href="mailto:{{board.base_mail}}" target="_blank">
 					  <img src="{% static "images/email.png" %}" width="16" height="16" border="0" align="absmiddle"></a>
 					{% endif %}
 					&nbsp;
-					{% if unit.bweb != "" %}
-					  <a href="{{unit.bweb}}" target="_blank">
+					{% if board.bweb != "" %}
+					  <a href="{{board.base_web}}" target="_blank">
 					  <img src="{% static "images/world.png" %}" width="16" height="16" border="0" align="absmiddle"></a>
 					{% endif %}
 				  </p>
